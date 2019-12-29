@@ -11,11 +11,10 @@ import java.util.stream.Collectors;
 public class CountingDuplicates {
 
 	public static int duplicateCount(String text) {
-		String[] textArray = text.split("");
+		String[] textArray = text.toLowerCase().split("");
 		List<String> result = new ArrayList<String>();
 		result = Arrays.stream(textArray)
-		.map(String::toLowerCase)
-		.filter(x-> Collections.frequency(Arrays.asList(text.toLowerCase().split("")), x) > 1).distinct()
+		.filter(x-> Collections.frequency(Arrays.asList(textArray), x) > 1).distinct()
 		.collect(Collectors.toList());
 		
 		return result.size();
